@@ -1,0 +1,20 @@
+<h2>Sneakers in stock</h2>
+<div>
+    <label>Numele adidasilor:
+      <input #adidasiName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(adidasiName.value); adidasiName.value=''">
+      Add
+    </button>
+  </div>
+<ul class="heroes">
+  <li *ngFor="let adidasi of adidasi">
+    <a routerLink="detail/{{adidasi.id}}">
+    <span class="badge">{{adidasi.id}}</span>{{adidasi.name}}  
+  </a>
+  <button class="delete" title="delete adidasi"
+  (click)="delete(adidasi)">x</button>
+  </li>
+ 
+</ul>

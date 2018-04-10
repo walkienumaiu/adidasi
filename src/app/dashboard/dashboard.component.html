@@ -1,0 +1,9 @@
+<h3>Top Adidasi</h3>
+<div class="grid grid-pad">
+    <a  *ngFor="let adidasi of adidasi" routerLink="/detail/{{adidasi.id}}"class="col-1-4">
+      <div class="module hero">
+        <h4>{{adidasi.name}}</h4>
+      </div>
+    </a>
+  </div>
+  <app-search></app-search>
