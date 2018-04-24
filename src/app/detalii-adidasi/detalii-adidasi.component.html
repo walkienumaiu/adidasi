@@ -4,9 +4,11 @@
   <label>name:
     <input [(ngModel)]="adidasi.name" placeholder="name">
   </label>
-
+<img [src]="adidasi.url"/>
+<p>Price {{adidasi.price | currency}}</p>
  <button (click)="goBack()">Go back!</button>
  <br/>
  <button (click)="save()">save</button>
+ <button (click)="buy()">Add to cart</button>
  
 </div>

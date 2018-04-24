@@ -14,23 +14,27 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { SearchComponent } from './search/search.component';
-
-
+import { CartComponent } from './cart/cart.component';
+import { PersistenceModule } from 'angular-persistence';
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     AdidasiComponent,
     DetaliiAdidasiComponent,
     MessagesComponent,
     DashboardComponent,
-    SearchComponent
+    SearchComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    PersistenceModule,
+    
 
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.

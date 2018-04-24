@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AdidasiClass} from './AdidasiClass';
-
+import { PersistenceService, StorageType } from 'angular-persistence';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -13,7 +13,9 @@ const httpOptions = {
 @Injectable()
 export class AdServService {
   private adidasiUrl = 'api/adidasi';
-
+  private cosUrl='api/cos';
+  private aaa:Observable<AdidasiClass[]>;
+  public cos:AdidasiClass[]=[];
 
   getAdidasi(): Observable< AdidasiClass[]> {
     this.messageService.add("AdServService: adidasi importati din baza de date");
@@ -21,6 +23,12 @@ export class AdServService {
     return this.http.get<AdidasiClass[]>(this.adidasiUrl).pipe(
      tap(adidasi=>this.log('adidasi incarcati din db')),
       catchError(this.handleError('getAdidasi',[])));
+  }
+  getBasket():Observable<AdidasiClass[]>{
+    
+    this.messageService.add("AdServService: Cosul este pregatit!");
+    
+    return this.http.get<AdidasiClass[]>(this.cosUrl);
   }
   
   private handleError<T> (operation = 'operation', result?: T) {
@@ -60,6 +68,15 @@ export class AdServService {
     )
 
   }
+  addToCart(mergatori:AdidasiClass[]):void{
+    this.http.post<AdidasiClass[]>(this.cosUrl, mergatori,httpOptions);
+    this.persistence.set('cos', mergatori, {type:StorageType.IMMUTABLE_MEMORY});
+    console.log('AdServService: ',this.persistence.get('cos',StorageType.IMMUTABLE_MEMORY) );
+    this.messageService.add(''+mergatori.map((a)=>''+a ));
+  }
+  sendCart():any{
+    return this.persistence.get('cos',StorageType.IMMUTABLE_MEMORY);
+  }
   deleteAdidasi(papuci:AdidasiClass|number):Observable<AdidasiClass>{
     const id= typeof papuci==='number'? papuci:papuci.id;
     const url=`${this.adidasiUrl}/${id}`;
@@ -82,8 +99,8 @@ export class AdServService {
     );
   }
 
-
-  constructor(private messageService: MessageService,private http:HttpClient) { }
+  
+  constructor(private messageService: MessageService,private http:HttpClient,private persistence:PersistenceService) { }
  
   private log(message: string) {
     this.messageService.add('AdidasiService: asta intra ' + message);
