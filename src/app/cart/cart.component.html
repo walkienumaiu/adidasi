@@ -10,45 +10,28 @@
     <label class="product-removal">Remove</label>
     <label class="product-line-price">Total</label>
   </div>
-
+<div *ngFor="let adidasi of shoppingCartItems">
   <div class="product">
     <div class="product-image">
-      <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg">
+      <img [src]="adidasi.url"/>
     </div>
     <div class="product-details">
-      <div class="product-title">Titlu</div>
-      <p class="product-description">Descriere.</p>
+      <div class="product-title">{{adidasi.name}}</div>
+      <p class="product-description">{{adidasi.description}}</p>
     </div>
-    <div class="product-price">Pret</div>
+    <div class="product-price">{{adidasi.price}}</div>
     <div class="product-quantity">
       <input type="number" value="2" min="1">
     </div>
     <div class="product-removal">
-      <button class="remove-product">
+      <button class="remove-product" (click)="removeItem(adidasi)">
         Sterge
       </button>
     </div>
     <div class="product-line-price">Pret total</div>
   </div>
-  <div class="product">
-    <div class="product-image">
-      <img [src]="">
-    </div>
-    <div class="product-details">
-      <div class="product-title">Titlu</div>
-      <p class="product-description">Descriere.</p>
-    </div>
-    <div class="product-price">Pret</div>
-    <div class="product-quantity">
-      <input type="number" value="2" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Sterge
-      </button>
-    </div>
-    <div class="product-line-price">Pret total</div>
-  </div>
+</div>
+  
 
 
 

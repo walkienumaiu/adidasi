@@ -16,6 +16,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { SearchComponent } from './search/search.component';
 import { CartComponent } from './cart/cart.component';
 import { PersistenceModule } from 'angular-persistence';
+import { CartService } from './cart.service';
 
 @NgModule({
   
@@ -43,7 +44,7 @@ HttpClientInMemoryWebApiModule.forRoot(
   InMemoryDataService, { dataEncapsulation: false }
 )
   ],
-  providers: [AdServService, MessageService],
+  providers: [AdServService, MessageService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
