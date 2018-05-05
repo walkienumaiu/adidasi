@@ -10,7 +10,9 @@ import{AdidasiClass} from '../AdidasiClass';
 export class AdidasiComponent implements OnInit {
  
   adidasi: AdidasiClass[] ;
-  
+  min: number;
+  max:number;
+  a:number;
   constructor(private adServ:AdServService ) { }
   getAdidasi(): void {
      this.adServ.getAdidasi().subscribe((adidasi:AdidasiClass[])=>this.adidasi=adidasi);
@@ -26,6 +28,10 @@ export class AdidasiComponent implements OnInit {
       .subscribe(papuci => {
         this.adidasi.push(papuci);
       });
+  }
+  filterByPrice(){
+    this.adidasi=this.adidasi.filter(age=>age.price >= this.min);
+    this.adidasi=this.adidasi.filter(a=>a.price<=this.max);
   }
   delete(papuci:AdidasiClass):void{
     this.adidasi=this.adidasi.filter(a => a !== papuci);

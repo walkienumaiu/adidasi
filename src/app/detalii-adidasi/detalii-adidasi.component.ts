@@ -36,11 +36,8 @@ export class DetaliiAdidasiComponent implements OnInit {
   }
  
   buy():void{
-    // this.adService.addToCart((adidasi)=>{this.forCart.push(this.adidasi)});
-    // this.forCart.push(this.adidasi);
-    // this.persistenceService.set('itemi', this.forCart,{type:StorageType.LOCAL});
-    // console.log(this.persistenceService.get('itemi',StorageType.LOCAL));
-    this.cartService.addToCart(this.adidasi);
+   
+  this.cartService.addToCart(this.adidasi);
   }
 
   save(): void {

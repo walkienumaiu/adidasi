@@ -15,9 +15,8 @@ export class CartComponent implements OnInit {
   public shoppingCartItems: AdidasiClass[] = [];
 
   constructor(private cartService: CartService) {
-    this.shoppingCartItems$ = this
-      .cartService
-      .getItems();
+    
+    this.shoppingCartItems$ = this.cartService.getItems();
 
     this.shoppingCartItems$.subscribe(_ => this.shoppingCartItems = _);
   }
