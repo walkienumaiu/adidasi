@@ -32,9 +32,13 @@ export class AdidasiComponent implements OnInit {
   filterByPrice(){
     this.adidasi=this.adidasi.filter(age=>age.price >= this.min);
     this.adidasi=this.adidasi.filter(a=>a.price<=this.max);
+    this.min=undefined;
+    this.max=undefined;
   }
   delete(papuci:AdidasiClass):void{
     this.adidasi=this.adidasi.filter(a => a !== papuci);
     this.adServ.deleteAdidasi(papuci).subscribe();
+    
   }
+  
 }

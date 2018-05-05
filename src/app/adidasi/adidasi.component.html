@@ -1,6 +1,7 @@
-<h2>Sneakers in stock</h2>
 
-<ul class="heroes">
+  <h2>Sneakers in stock</h2>
+
+<!-- <ul class="heroes">
   
   <li *ngFor="let adidasi of adidasi">
     <a routerLink="detail/{{adidasi.id}}">
@@ -8,10 +9,28 @@
    </a>
   </li>
 
-</ul>
+</ul> -->
 
 <form>
  <label for="min">Min price:</label> <input id="min" type="number" [(ngModel)]="min"  [ngModelOptions]="{standalone: true} ">
   <label for="max">Max price:</label><input id="max" type="number" [(ngModel)]="max"  [ngModelOptions]="{standalone: true}">
   <button type="submit"(click)="filterByPrice()">Filter</button>
+  <button type="submit"(click)="ngOnInit()">Refresh</button>
 </form>
+  <ul>
+    <li *ngFor="let adidasi of adidasi">
+    	<div id="wrap">
+          <div id="columns" class="columns_4">
+          <figure>
+           <img [src]="adidasi.url">
+            <figcaption>{{adidasi.name}}</figcaption>
+                <span class="price">${{adidasi.price}}</span>
+                <a class="button" href="#">Cumpara!</a>
+                <a class="button"  routerLink="/detail/{{adidasi.id}}">Vizualizeaza detalii!!</a>
+           </figure>
+  
+         </div>
+      </div>
+</li>
+</ul>
+

@@ -43,4 +43,5 @@ export class DetaliiAdidasiComponent implements OnInit {
   save(): void {
     this.adService.updateAdidasi(this.adidasi);
   }
+  
 }

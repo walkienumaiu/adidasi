@@ -1,4 +1,4 @@
-<div *ngIf="adidasi">
+<!-- <div *ngIf="adidasi">
     <h2>{{ adidasi.name | uppercase }} Details</h2>
     <div><span>id: </span>{{adidasi.id}}</div>
   <label>name:
@@ -11,4 +11,29 @@
  <button (click)="save()">save</button>
  <button (click)="buy()">Add to cart</button>
  
+</div> -->
+<div *ngIf="adidasi">
+    <div class="container">
+  
+        <div class="product">
+          <div class="img-container">
+            <img [src]="adidasi.url">
+          </div>
+          <div class="product-info">
+            <div class="product-content">
+              <h1>{{adidasi.name}}</h1>
+              <p>{{adidasi.description}}</p>
+              
+              <div class="buttons">
+                
+                <button class="button add" (click)="buy()">Add to cart</button>
+                <button (click)="goBack()">Go back!</button>
+                <span class="button" id="price">${{adidasi.price}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+                     
+      </div>
 </div>
+
